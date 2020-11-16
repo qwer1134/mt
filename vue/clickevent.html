@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="div">
+        <button v-on:keyup.enter='cli'>btn</button>
+        <input type="checkbox" id="che" v-model='chec'>
+        <label for="che">{{ chec }}</label>
+
+        <input type="checkbox" id="che1" v-model='che' value="1"><label for="che1">111111111</label>
+        <input type="checkbox" id="che2" v-model='che' value="2"><label for="che2">22222222</label>
+        <input type="checkbox" id="che3" v-model='che' value="3"><label for="che3">333333</label>
+        <span>{{che}}</span>
+        </div>
+        <div id="se">
+            <select v-model='sele'>
+                <option disabled value="">请选择</option> 
+                <option>tom</option>
+                <option>jecksd</option>
+                <option>janr</option>
+            </select>
+            <span>{{sele}}</span>
+        </div>
+        <script src="vue.js"></script>
+    <script>
+    var app=new Vue({
+        el:'#div',
+        data:{
+            name:'tom',
+            chec:'',
+            che:[]
+        },
+        methods:{
+            cli:function(){
+                alert(this.name)
+            }
+        }
+    })
+    var app2=new Vue({
+        el:'#se',
+        data:{
+            sele:''
+        }
+       
+    })
+    </script>
+    </body>
+</html>

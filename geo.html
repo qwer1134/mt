@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>promise</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .d1{
+      display: inline-block;
+      background-color: bisque;
+    }
+    .d1>div{
+      display: inline-block;
+      width:80px;
+      padding: 5px 0;
+      text-align: center;
+    }
+    .d1>.active{
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1">
+    <div class="active">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+  <form name="form">
+    <input type="text" name="phone" disabled>
+  </form>
+  <button class="btn">btn</button>
+  <div class="yeah">y</div>
+  <div class="no">n</div>
+  <script>
+   let form=document.querySelector('.form')
+   let btn=document.querySelector('.btn')
+   let ye=document.querySelector('.yeah')
+   let no=document.querySelector('.no')
+   const options={
+    enableHighAccuracy:false,
+    timeout:4000,
+    maximumAge:0
+     }
+     function getLocation(pos) {
+       ye.innerHTML=pos.coords
+     }
+     function errorLocaation(err) {
+       no.innerHTML=err.code+' '+ err.message
+     }
+   btn.onclick=function(){
+     navigator.geolocation.getCurrentPosition(getLocation,errorLocaation,options)
+   }
+   </script>
+  <style>
+  </style>
+</body>
+</html>

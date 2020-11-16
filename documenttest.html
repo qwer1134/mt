@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .bor{
+        display: inline-block;
+        border:1px solid black;
+        /* height: 50px;
+        width: 50px; */
+        background-color: red;
+    }
+    .set{
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <a id="a1">aaaaaaa</a>
+    <div id="num">44ff<p>get</p><p>set</p></div>
+    <script>   
+    let div1=document.querySelectorAll("#div1");
+    let txt=document.createTextNode('abc');
+    let txt1=document.createTextNode('111');
+    let a1=getElment("a1");
+
+    let num=getElment("num");
+
+    let newDiv=document.createElement("div");
+    let newTxt=document.createElement("p");
+
+    newTxt.append(txt);
+    newDiv.insertBefore(newTxt,newDiv.lastChild)
+    newDiv.style.height=50+"px";
+    newDiv.style.width=200+"px";
+    newDiv.className="bor"
+    newDiv.getAttribute("style")
+    a1.insertBefore(newDiv,a1.firstChild)
+    // div1[0].appendChild(newTxt)
+    // div1[0].innerHTML="123"
+    let clone=newDiv.cloneNode(true);
+    let body=document.body;
+    body.appendChild(clone);
+    console.log(newDiv)
+    function getElment(id) {
+        return document.getElementById(id);
+    }
+    </script>
+</body>
+</html>

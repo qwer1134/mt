@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>tz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+    <style>
+        *{padding: 0;margin: 0;}
+   #div{
+       height: 200px;
+       width:200px;
+       background-color: green;
+       position: absolute;
+       z-index: 2;
+       /* left: 50px; */
+   }
+   #div2{
+       height: 300px;
+       width:300px;
+       background-color: red;
+       position: absolute;
+       z-index: 2;
+   }
+    </style>
+   
+</head>
+<body><div id="div2">acsdffffffffffffffffffffffffffffffffffffghjgjfffffc</div>
+   <div id="div">aaa</div>
+   
+   <div>bb</div>
+   <script>
+     
+      var div=document.getElementById("div");  
+function tz(){
+
+
+    div.onmousedown=function (ev){
+       var oEvent=ev||event;
+        var left=0;
+        var tt=0;
+        left=oEvent.clientX-div.offsetLeft;
+        tt=oEvent.clientY-div.offsetTop;
+
+       
+        document.onmousemove=function(ev){
+            var oEvent=ev||event;
+            var l=oEvent.clientX-left;
+            var t=oEvent.clientY-tt;
+            
+
+            if(l<10){
+               l=0;
+            }else if(t<10){
+                t=0;}
+
+            div.style.left=l+"px";
+            div.style.top=t+"px";
+        }
+        document.onmouseup=function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+    }
+       }
+       tz();
+   </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var pro=new Array;
+  var arr=[4,5,6,7,8];
+  var arrjson=[{'id':'tom','age':15},{'id':'jo','age':12},{'id':'anmi','age':13}];
+
+  function join(x,len){
+    return new Array(len+1).join(x);
+  }
+  console.log( join('a',4) );
+
+var revers=arr.reverse();     //倒序
+console.log(arr);
+
+  arr.sort(function(x,y){     //排序
+    return x-y;
+  })
+  arrjson.sort(function(x,y){     //排序
+    return x.age-y.age;
+  })
+  arrjson.forEach(function(x){    //每个执行一遍
+    pro.push(x.age);
+  })
+  console.log(pro);
+  console.log(arr);
+
+console.log(arr.slice(1,4));      //裁切
+
+arr.splice(2,2,9,8);          //删除添加
+console.log(arr);
+
+arr.forEach(function(val,x,index){
+  val=val+10;
+    console.log(val+'|'+x+'|'+index);
+})
+var arr2 = arr.filter(function(val,index){    //条件选取
+  return val>6||index%2==0;
+})
+
+var arr3 = arr.every(function(x){   //逻辑 且  符合条件 
+  return x>6;
+})
+var arr4 = arr.some(function(x){    //逻辑或    条件
+  return x>6;
+})
+
+var sum = arr.reduce(function(x,y){   //集合变为一个数
+  return x+y;
+})
+var max=arr.reduce(function(x,y){
+  return x>y?x:y;
+})
+console.log(max);
+
+var boo=Array.isArray(arr);     //判断数组      [] instanceof Array 也行
+console.log(boo);
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+<body>
+  <script>
+    function myPromise(Fn) {
+      this.status='pending'
+      this.value=undefined
+      this.reason=undefined
+      this.onResolve=[]
+      this.onReject=[]
+      let resolve=(value) => {
+        if(this.status==='pending')
+          this.status='resolve'
+          this.value=value
+          this.onReject.forEach(Fn => {
+            Fn&&Fn(value)
+          });
+      }
+      let reject=(reason) => {
+        if(this.status==='pending'){
+          this.status='reject'
+          this.reason=reason
+          this.onReject.forEach(Fn => {
+            Fn&&Fn(reason)
+          })
+        }
+      }
+      try {
+        Fn(resolve,reject)
+      }catch(err) {
+        reject(err)
+      }
+    }
+    myPromise.prototype.then=function(resFn,rejFn) {
+      switch(this.status){
+        case 'pending':
+        this.onResolve.push(resFn)
+        this.onReject.push(rejFn)
+        break
+        case 'resolve': resFn(this.value)
+        break
+        case 'reject': rejFn(this.reason)
+        break
+        default: console.log('==')
+      }
+    }
+
+    let mypro=new myPromise((resolve,reject)=>{
+      setTimeout(()=>{
+        resolve(Math.random())
+      },1000)
+      // resolve(Math.random())
+    })
+    mypro.then((val)=>{
+      console.log(val)
+    },(val)=>{
+      console.log(val)
+    })
+  </script>
+</body>
+</html>

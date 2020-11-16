@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pp</title>
+</head>
+<body>
+    <script>
+    function myPromise(constructor){
+
+        this.status="pending" //定义状态改变前的初始状态
+        this.value=undefined;//定义状态为resolved的时候的状态
+        this.resolveFn=null
+        this.rejectFn=null
+        console.log(this)
+        const resolve=(value)=>{
+            //两个==="pending"，保证了状态的改变是不可逆的
+            console.log(this)
+            if(this.status==="pending"){
+                setTimeout(()=>{
+                    this.value=value;
+                    this.status="resolved";
+                    this.resolveFn(value)
+                })
+            }
+            else {
+                return
+            }
+        }
+        const reject=(reason)=>{
+            //两个==="pending"，保证了状态的改变是不可逆的
+            if(this.status==="pending"){
+                setTimeout(()=>{
+                    this.value=reason;
+                    this.status="rejected";
+                    this.rejectFn(reason)
+                })
+            }
+            else {
+                return
+            }
+        }
+        //捕获构造异常
+        try{
+            constructor(resolve,reject);
+        }catch(e){
+            reject(e);
+        }
+    }
+// 定义链式调用的then方法
+myPromise.prototype.then=function(onFullfilled,onRejected){
+    this.resolveFn=onFullfilled;
+    this.rejectFn=onRejected;
+   }
+
+let mypromise = new myPromise((resolve,reject)=>{
+    resolve('cc')
+    setTimeout(()=>{
+        
+        console.log(55)
+        // reject('dd')
+    },1000)
+})
+// console.log(mypromise)
+.then((val)=>{
+    console.log(val)
+},(err)=>{
+    console.log(err)
+})
+    </script>
+</body>
+</html>

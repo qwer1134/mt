@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="img"></div>
+    <script>
+        let imgbox = document.getElementById("img");
+        let img = getmap();
+        console.log(img)
+        imgbox.appendChild(img);
+        function getmap() {
+            if(!navigator.geolocation) {
+                throw "不支持"
+            }
+            let image = document.createElement('img');
+            navigator.geolocation.getCurrentPosition(setMapURL);
+            return image;
+        }
+        function setMapURL(pos) {
+            let latitude = pos.coords.latitude;
+            let longitude = pos.coords.longitude;
+            let accuracy = pos.coords.accuracy;
+
+            let url = "http://maps.google.com/maps/api/statimap"+"?center"+latitude+","+longitude+"&size=640*640&sensor=true";
+            var zoomlevel = 20;
+            if(accuracy > 80){
+                zoomlevel -= Math.round(Math.log(accuracy/50)/Math.LN2);
+                url += "&zoom=" + zoomlevel;
+                image.src = url;
+            }
+        }
+        </script>
+</body>
+</html>

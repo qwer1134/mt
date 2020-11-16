@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #all{
+                background-color:white;
+                border: 1px solid black;
+                display:inline-block;
+            }
+            #all button.active{
+                background-color: yellow;
+            }
+            #all div{
+                height: 200px;
+                width: 200px;
+                background-color: #ccc;
+                display: none;
+            }
+        </style>
+    <body>
+        <div id="all">
+  
+    <button class="active">a</button>
+    <button>b</button>
+    <button>c</button>
+     <div class="d1" style="display:block;">aaa</div>
+     <div class="d2">bbb</div>
+     <div class="d3">ccc</div>
+        </div>
+     <script>
+         var all=document.getElementById("all");
+         var btn=all.getElementsByTagName("button");
+         var div=all.getElementsByTagName("div");
+
+         for(var i=0;i<btn.length;i++){
+             btn[i].index=i;
+            btn[i].onclick=function(){
+                
+                for(var i=0;i<btn.length;i++){
+                    btn[i].className="";
+                    div[i].style.display="none";
+
+                }
+                this.className="active";
+                div[this.index].style.display="block";
+            }
+         }
+  
+     </script>
+    </body>
+</html>

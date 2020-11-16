@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;
+        padding:0;}
+        .div{
+            height: 30px;
+            width: 30px;
+            background-color: red;
+            position: relative;
+        }
+        .div1{
+            background-color: aqua;
+            /* position: relative;
+            top:1000px; */
+        }
+        .lin{
+            background: blue;
+            padding: 50px;
+            margin: 50px;
+            /* height: 50px;
+            width: 50px; */
+            border: 1px solid black;
+        }
+        .dd{
+            height: 30px;
+            width: 3000px;
+            border: 1px solid black;
+            /* box-sizing: border-box; */
+            position: relative;
+            left: 10px;
+            /* margin: 10px; */
+            /* padding: 10px; */
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+  
+    <div id="div" index="1"></div>
+    <div class="div div1"><div class="nei">22</div></div>
+    <div class="dd">11</div>
+    <form>
+        <input type="checkbox" name="che">复选框<br>
+        <select>
+            <option>西红柿</option>
+            <option>丝瓜</option>
+            <option>牛肉</option>
+        </select>
+    </form>
+    <script>
+        let di=document.getElementById('div');
+        console.log(di.getAttribute('index'));
+        window.onload=function() {
+            let div=document.querySelectorAll(".dd")[0];
+            let nei=document.querySelectorAll('.div :first-child')[0];
+
+            div.style.left=10+'px';
+            let divd=div.getBoundingClientRect();
+            let divc=div.getClientRects();
+            // console.log(div.scrollLeft);
+            //  console.log(nei.innerHTML);
+        }
+    </script>
+</body>
+</html>

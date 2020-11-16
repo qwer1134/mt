@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三友</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="swiper.css">
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        display: flex;
+        background-color: bisque;
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+    }
+    .left {
+        flex:0 0 80px;
+        background-color: white;
+    }
+    .right {
+        flex: 1;
+    }
+    ul li {
+        display: table;
+        width: 56px;
+        height: 54px;
+        padding: 0 12px;
+        text-align: center;
+    }
+    span {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .active {
+        background-color: darkgray;
+    }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+    <div class="left">
+        <ul>
+            <li class="active"><span>热销冻品</span></li>
+            <li><span>牛肉</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>青瓜</span></li>
+            <li><span>羊肉</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+            <li><span>西红柿</span></li>
+        </ul>
+    </div>
+    <div class="right">11</div>
+    </div>
+    <script src="swiper.js"></script>
+    <script>
+        var li = document.getElementsByTagName("li");
+        for(var i=0;i<li.length-1;i++) { 
+            li[i].onclick=function() {
+                for(var j=0;j<li.length-1;j++){
+                    li[j].className="";
+                }
+                this.className="active";
+            }
+        }
+        var mySwiper=new Swiper(".swiper-container",{
+            direction: 'vertical',
+        })
+    </script>
+</body>
+</html>

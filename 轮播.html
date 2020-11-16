@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div{
+            position: relative;
+            background-color:green;
+            overflow: hidden;
+            width: 450px;
+            height: 120px;
+        }   
+        ul{
+            position: absolute;
+            list-style: none;
+            left: 0;
+            float: left;
+            width: 1200px;
+            background-color: blue;
+        }
+        li{
+            float: left;
+        }
+        </style>
+    </head>
+
+    <body>
+      <div id="div">
+          <ul>
+              <li><img src="img/1.jpg"></li>
+              <li><img src="img/2.jpg"></li>
+              <li><img src="img/3.jpg"></li>
+              <li><img src="img/4.jpg"></li>
+              
+          </ul>
+      </div>
+      <span>向左</span>
+      <span>向右</span>
+      <script>
+      var odiv=document.getElementById("div");
+      var oul=odiv.getElementsByTagName("ul")[0];
+      var img=document.getElementsByTagName("img");
+      var left=document.getElementsByTagName("span")[0];
+      var rig=document.getElementsByTagName("span")[1];
+        var speed=2;
+        var interval;
+
+        oul.innerHTML=oul.innerHTML+oul.innerHTML;
+            oul.style.height=img[0].offsetWidth*img.length;
+        function move(){
+          
+
+
+            if(oul.offsetLeft<-oul.offsetWidth/2){
+                oul.style.left='0';
+            }
+            if(oul.offsetLeft>0){
+                oul.style.left=-(oul.offsetWidth/2)+"px";
+            }
+         
+            oul.style.left=oul.offsetLeft+speed+"px";
+        
+      
+        }
+        left.onclick=function(){
+            speed=-2;
+        }
+        rig.onclick=function(){
+            speed=2;
+        }
+        interval=setInterval("move()",30);
+
+
+       odiv.onmousemove=function(){
+           clearInterval(interval);
+       }
+       odiv.onmouseout=function(){
+        interval=setInterval("move()",30);
+       }
+      </script>
+    </body>
+</html>

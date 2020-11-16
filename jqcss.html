@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+       <style>
+     
+       </style>
+      
+    </head>
+    <body>
+        <button>add</button>
+  <ul>
+      <li><a>1</a></li>
+      <li><a>2</a></li>
+      <li><a>3</a></li>
+      <li><a>4</a></li>
+  </ul>
+  <script src="js/jq.js"></script>
+  <script>
+      $(document).ready(function(){
+        $("button").click(function(){
+         $("ul").css({
+             "background":"blue",
+             "border":"1px solid black",
+             "margin":"5px"
+             
+             });
+    
+       $("li").css("list-style","none");
+         alert($("ul").css("margin"))
+        })
+      
+      })
+  </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+parentNode   		
+childNode[0]
+firteChild
+lastChild
+
+let
+改进：块级作用域
+改进：不存在变量提升
+改进：不可重复声明
+
+改进：不绑定全局作用域
+改进：暂时性死区
+
+
+string
+
+charAt()  知下标求字母
+indexOf() 知字母求下边 没有则返回-1
+
+concat() 连接字符串
+slice() 裁切字符串
+
+
+Math
+.abs()		绝对值
+.ceil()		向上取整
+.floor()	向下取整
+.max()		取最大值
+.min()		取最小值
+.round()	四舍五入
+.random()	取0（包含0）至1（不包含1）的随机数  
+
+jquery显示隐藏 特效
+hide()	show()	toggle()
+fadeIn()	fadeOut()	fadeToggle()	fadeTo()
+slideDown()	slideUp()	slideToggle()
+
+
+jq节点
+
+parent()	直接父节点
+children()	返回所有子节点
+siblings()	返回所有同胞节点
+next()		下一个同胞节点
+
+first()		首个节点
+last()		最后的节点
+eq()		下标

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       <input type="text" id="txt">
+        <button onclick="ab()">选择</button>
+        <div id="div"></div>
+        <script>
+        var a=1;
+        while(a<8){
+            a=a+2;
+        }
+        iCount = 6;
+
+    function ab(){
+    var txt =document.getElementById("txt");
+    var txtva=parseInt(txt.value);
+    var div =document.getElementById("div");
+    
+   
+   
+    
+        switch(txtva){
+            case 1: div.innerHTML="茄子";break;
+            case 2: div.innerHTML="西红柿";break;
+            case 3: div.innerHTML="菠萝";break;
+            case 4: div.innerHTML="红薯";break;
+            default:div.innerHTML="没这个选项";
+        }
+       
+    }
+        </script>
+    </body>
+</html>

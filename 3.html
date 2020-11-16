@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>map</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .d1{
+        height: 500px;
+        background-color: aqua;
+    }
+    </style>
+</head>
+<body>
+    <div class="d1">div</div>
+    <input type="file">
+  <script>
+  function myMap(Fn,arr){
+  if(typeof Fn!=='function'||!arr.length||!Array.isArray(arr)){
+    return []
+  }
+  let rus=[]
+  for(let i=0;i<arr.length;i++){
+    rus.push(Fn(arr[i],i,arr))
+  }
+  return rus
+  }
+  function callback(val,index) {
+    return val+1
+  }
+
+  function myFliter(Fn,arr){
+    if(typeof Fn!=='function'||!arr.length||!Array.isArray(arr)){
+      return []
+    }
+    let rus=[]
+    for(let i=0;i<arr.length;i++){
+      if(Fn(arr[i],i,arr)){
+        rus.push(arr[i])
+      }
+    }
+    return rus
+  }
+
+
+  function myReduce(Fn,arr,staVal) {
+    if(typeof Fn!=='function'||!arr.length||!Array.isArray(arr)){
+      return []
+    }
+    let value=staVal?staVal:arr[0]
+    for(let i=staVal?0:1;i<arr.length;i++){
+      value = Fn(value,arr[i],i,arr)
+    }
+    return value
+  }
+
+
+
+  function callback(num,val,index,arr){
+    return num+val
+  }
+  let arr=[2,3,5,4,6]
+  let call=myReduce(callback,arr)
+  console.log(call)
+  </script>
+</body>
+</html>

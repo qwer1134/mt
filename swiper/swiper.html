@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>swiper</title>
+    <link rel="stylesheet" href="swiper.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container{
+            /* display: inline-block; */
+            width: 150px;
+            height: 120px;
+        }
+        .all {
+            width: 200px;
+            height: 120px;
+            border: 1px solid red;
+            margin: auto;
+            font-size: 0;
+            overflow: hidden;
+        }
+        /* .fenye {
+            display: inline-block;
+            width: 50px;
+            height: 120px;
+            position: relative;
+        }
+        .fenye .swiper-pagination span {
+            display: block;
+            font-size: 0;
+            margin:5px auto;
+            
+        } */
+        /* .swiper-pagination{
+            position: static;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <div class="fenye">
+        <div class="swiper-pagination"></div>
+    </div> -->
+     <div class="pag">
+                    <div class="swiper-pagination"></div>
+                </div>
+        <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="image/1.jpg"></div>
+                    <div class="swiper-slide"><img src="image/2.jpg"></div>
+                    <div class="swiper-slide"><img src="image/3.jpg"></div>
+                    <div class="swiper-slide"><img src="image/4.jpg"></div>
+                    <div class="swiper-slide"><img src="image/1.jpg"></div>
+                    <div class="swiper-slide"><img src="image/2.jpg"></div>
+                    <div class="swiper-slide"><img src="image/3.jpg"></div>
+                    <div class="swiper-slide"><img src="image/4.jpg"></div>
+                    <div class="swiper-slide"><img src="image/1.jpg"></div>
+                    <div class="swiper-slide"><img src="image/2.jpg"></div>
+                    <div class="swiper-slide"><img src="image/3.jpg"></div>
+                    <div class="swiper-slide"><img src="image/4.jpg"></div>
+                </div>
+               
+                
+                <!-- 如果需要分页器 -->
+                
+                
+                <!-- 如果需要导航按钮 -->
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
+                
+                <!-- 如果需要滚动条 -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+           
+    <script src="swiper.js"></script>
+    <script> 
+    document.addEventListener("DOMContentLoaded",slider)
+    function slider(){       
+            var mySwiper = new Swiper ('.swiper-container', {
+              direction: 'vertical', // 垂直切换选项
+              loop: true, // 循环模式选项
+              
+              // 如果需要分页器
+              pagination: {
+                el: '.swiper-pagination',
+                clickable :true,
+              },
+              freeMode: true,
+              autoplay: false,
+              // 如果需要前进后退按钮
+            //   navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            //   },
+              
+              // 如果需要滚动条
+            //   scrollbar: {
+            //     el: '.swiper-scrollbar',
+            //   },
+            })    
+            var slide = document.getElementsByClassName("swiper-container")[0];
+            slide.addEventListener("mouseover",function() {
+                mySwiper.autoplay.stop()
+            })
+            slide.addEventListener("mouseout", function() {
+                mySwiper.autoplay.start();
+            })
+        }    
+        // function pagination() {
+        //     var paginationSlider = new Swiper ('.fenye' , {
+        //         direction: 'vertical',
+        //     })
+        // };
+        // pagination()
+            </script>
+           
+</body>
+</html>

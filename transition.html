@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="top"></div>
+        <div class="bto"></div>
+    </div>
+</body>
+<style>
+.box {
+    position: relative;
+    left: 0px;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    /* transition: left 3s ease; */
+    transition: all 10s ease;
+    border-radius: 30%;
+}
+.box:hover {
+    /* left: 50px; */
+    transform:  rotate(30rad); /*移动*/
+    /* transform: scale(2);  放大 */
+   
+}
+.top{
+    height: 25px;
+    background-color: greenyellow
+}
+.bto{
+    height: 25px;
+    background-color: blue;
+}
+</style>
+</html>

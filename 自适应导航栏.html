@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="JQuery.js"></script>
+        <style>
+          
+            *{
+                padding: 0;
+                margin: 0;
+            }
+        ul{
+            
+            text-decoration: none;
+           
+            margin: auto;
+        }
+        li{
+            display: inline;
+        }
+        a{
+            float: left;
+            text-decoration: none;
+            background-color: aqua;
+            width:20%;
+            text-align: center;
+           padding: 5px 0px;
+        }
+        a:hover{
+            background-color: darkgrey;
+            
+        }
+        </style>
+    </head>
+    <body>
+        <div class="nav" id="nav"> 
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">产品</a></li>
+                <li><a href="#">新闻</a></li>
+                <li><a href="#">公司介绍</a></li>
+                <li><a href="#">地址</a></li>
+                
+                
+            </ul>
+    
+        </div>
+        
+        <script>
+            var odiv=document.getElementById("nav");
+            
+        function nav(nav){
+						
+                        var li_width = 0;
+                        var nav_width = 0;
+                        var li_pa;
+                        var li_len   = $("#"+nav+">ul>li").length;
+                        for(i=0;i<li_len;i++){
+                            nav_width += $("#"+nav+">ul>li").eq(i).outerWidth();
+                            } 
+                        li_pa  =  Math.floor(($("#"+nav+"").width()-nav_width)/li_len*0.5);
+                        $("#"+nav+">ul>li>a").css({"padding-left":li_pa,"padding-right":li_pa});
+                        
+                        nav_width = 0;
+                        
+                        for(i=0;i<li_len;i++){
+                            nav_width += $("#"+nav+">ul>li").eq(i).outerWidth();
+                            } 
+                        var last_pa = $("#"+nav+"").width()-nav_width
+                        $("#"+nav+">ul>li>a:last").css({"padding-right":li_pa+last_pa*0.5,"padding-left":li_pa+last_pa*0.5})
+                        if($("#"+nav+">ul").height()>$("#"+nav+">ul>li").height()){
+                            $("#"+nav+">ul>li>a:last").css({"padding-right":li_pa+last_pa*0.5,"padding-left":li_pa+last_pa*0.5-1})
+                            }
+                        
+                }/*end nav()*/
+        nav(odiv);
+        </script>
+    </body>
+</html>

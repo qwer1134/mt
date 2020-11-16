@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+        .top{
+            color:red;
+            
+        }
+        .fon{
+            font-size: 30px;
+        }
+        </style>
+       
+    </head>
+    <body>
+            <div v-if="Math.random() > 0.5">
+                    Now you see me
+                  </div>
+                  <div v-else>
+                    Now you don't
+                  </div>
+     <div id="di" v-bind:class="[to,nn]">{{na}}</div>
+     <div id="dl" v-bind:style="[obj]">all</div>
+   
+    
+        <script src="vue.js"></script>
+        <script>
+       
+        var vm=new Vue({
+            el:"#dc",
+            data:{
+               bo:true
+            }
+        
+        })
+        var vm=new Vue({
+            el:"#di",
+            data:{
+                val:true,
+                na:"txt",
+                "obj":{
+                    "top":true
+                },
+                to:"top",
+                nn:"fon"
+            }
+        
+        })
+        var app=new Vue({
+            el:"#dl",
+            data:{
+                obj:{
+                    color:"red",
+                    fontSize:"30px"
+                },
+                obj:{
+                    color:'red',
+                    fontSize:'28px' 
+                    }
+            }
+        })
+        </script>
+    </body>
+</html>

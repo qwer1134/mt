@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>XMLHttpRequest</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="tab">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <input type="file">
+        </div>
+        <script>
+            let data
+            function getData() {
+                const newAjax=new XMLHttpRequest()
+                newAjax.open('GET','1.html',true)
+                  newAjax.addEventListener('readystatechange',function() {
+                    if(newAjax.readyState===4&&newAjax.status===200){
+                        let header=newAjax.getResponseHeader('Content-Type')
+                        data=newAjax.response
+                    }
+                })
+                newAjax.setRequestHeader('Content-Type','text/plain')
+                newAjax.send()
+              
+            }
+            document.querySelector('.tab').onclick=function() {
+                // getData()
+                console.log(data)
+            }
+        </script>
+    </body>
+</html>

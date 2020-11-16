@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+    </style>
+</head>
+<body>
+   <ul>
+       <li>
+           <button class="reduce">-</button><span>0</span><button>+</button> 单价:12元 总价：<span>0</span>元
+       </li>
+       <li>
+        <button>-</button><span>0</span><button>+</button> 单价:15元 总价：<span>0</span>元
+        </li>
+        <li>
+            <button>-</button><span>0</span><button>+</button> 单价:23元 总价：<span>0</span>元
+        </li>
+        <li>
+            <button>-</button><span>0</span><button>+</button> 单价:10元 总价：<span>0</span>元
+        </li>
+        <li>
+            <button>-</button><span>0</span><button>+</button> 单价11元 总价：<span>0</span>元
+        </li>
+   </ul>
+   <div></div>
+   <section>共选择了<span class="allnum">0</span>件商品，共<span class="allgoods">0</span>元</section>
+</body>
+<script>
+    
+    let allArr=document.getElementsByTagName('li')
+    let allnumel=document.querySelector('.allnum')
+    let allgoods=document.querySelector('.allgoods')
+    let priceArr=[12,15,23,10,11]
+    for(let i=0;i<allArr.length;i++){
+        allArr[i].price=priceArr[i]
+        let price=allArr[i].querySelectorAll('button')[0]
+        let add=allArr[i].querySelectorAll('button')[1]
+        let dan=allArr[i].querySelectorAll('span')[1]
+        let numel=allArr[i].querySelectorAll('span')[0]
+        price.addEventListener('click',function() {
+            if(!this.num){
+                return
+            }
+            this.num--
+            numel.innerHTML=this.num
+            dan.innerHTML=this.price*this.num
+            allNum(allArr)
+            allGoods(allArr)
+        }.bind(allArr[i]))
+        add.addEventListener('click',function() {
+            if(!this.num){
+                this.num=1
+                numel.innerHTML=this.num
+                dan.innerHTML=this.price*this.num
+                allNum(allArr)
+                allGoods(allArr)
+                return
+            }
+            this.num++
+            numel.innerHTML=this.num
+            dan.innerHTML=this.price*this.num
+            allNum(allArr)
+            allGoods(allArr)
+        }.bind(allArr[i]))
+    }
+    function allNum(arr){
+        let num=0
+        Array.from(arr).forEach((goods)=>{
+            if(goods.num){
+                num=num+Number(goods.num)
+            }
+            
+        })
+        allnumel.innerHTML=num
+    }
+    function allGoods(arr){
+        let all=0
+        Array.from(arr).forEach((goods)=>{
+            if(goods.num){
+                all=all+Number(goods.num)*Number(goods.price)
+            }
+            
+        })
+        allgoods.innerHTML=all
+    }
+</script>
+</html>

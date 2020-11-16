@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function reduce(callback,arr,initVal) {
+      if(typeof callback!=='function'||!Array.isArray(arr)||!arr.length){
+        return []
+      } else {
+        let hasInitVal = initVal !== undefined
+        let value = hasInitVal?initVal:arr[0]
+        for(let i=hasInitVal?0:1;i<arr.length;i++){
+          value=callback(value,arr[i],i,arr)
+        }
+        return value
+      }
+    }
+    let arr=[1,2,3,4]
+    let re=reduce((val,value)=>{
+      return val+value
+    },arr,8)
+    console.log(re)
+  </script>
+</body>
+</html>

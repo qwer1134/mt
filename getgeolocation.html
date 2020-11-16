@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>geolocation</title>
+</head>
+<body>
+    <script>
+        window.navigator.geolocation.getCurrentPosition( 
+        function (pos) {
+            let latitude = pos.coords.latitude;
+            let longitude = pos.coords.longitude;
+           
+            console.log("position:" + latitude +"," + longitude);
+            console.log(pos)
+        });
+       
+        </script>
+</body>
+</html>

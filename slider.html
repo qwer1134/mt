@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>touch无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html, body{
+            width: 100%;
+            height: 100%;
+        }
+        html{
+            font-size: 20px;
+        }
+        #banner{
+            width: 100%;
+            height: 8rem;
+        }
+        #banner ul{
+            width: 75rem;
+            overflow: hidden;
+            list-style: none;
+        }
+        #banner ul li{
+            width: 18.75rem;
+            height: 8rem;
+            float: left;
+            color: white;
+            font-size: 26px;
+            line-height: 8rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <ul>
+            <li style="background: pink">1</li>
+            <li style="background: orange">2</li>
+            <li style="background: purple">3</li>
+            <li style="background: skyblue">4</li>
+        </ul>
+    </div>
+    <script>
+        //移动端rem兼容
+        document.documentElement.style.fontSize = 20*document.documentElement.clientWidth/375 + 'px';
+
+        var banner = document.getElementById('banner');
+        var ul = banner.getElementsByTagName('ul')[0];
+        var w = ul.firstElementChild.offsetWidth;
+        var i = 1;
+        //在ul首尾添加li，为了无缝滚动
+        ul.insertBefore(ul.lastElementChild.cloneNode(true), ul.children[0]);
+        ul.appendChild(ul.children[1].cloneNode(true));
+        ul.style.width = ul.children.length*w+'px';
+        //当前ul滑动到什么位置了
+        var bannerLeft = -w * i;
+        ul.style.transform = 'translateX('+bannerLeft+'px)';
+
+        var startX = 0, startY = 0;
+        var disX = 0, dir = '';
+        banner.addEventListener('touchstart', function(e){
+            e.preventDefault()
+            // e.cancelBubble = true;
+            ul.style.transition = '';       //先清除ul上的transition
+            startX = e.targetTouches[0].clientX;
+            dir = '';       //每开始touch一次先清除滑动方向
+
+            //如果当前touch的是第一个li，则将ul平移到倒数第二个li的位置            
+            if(e.target == ul.firstElementChild){
+                i = ul.children.length-2;
+                bannerLeft = -w * i;
+                ul.style.transform = 'translateX('+bannerLeft+'px)';
+            //如果当前touch的是最后一个li，则将ul平移到第二个li的位置
+            }else if(e.target == ul.lastElementChild){
+                i = 1;
+                bannerLeft = -w * i;
+                ul.style.transform = 'translateX('+bannerLeft+'px)';
+            }
+
+            disX = startX - bannerLeft;
+            banner.addEventListener('touchmove', function(e){
+                e.preventDefault()
+                //如果滑动方向还没确定，先确定一下
+                if(!dir){       
+                    if(Math.abs(e.targetTouches[0].clientX - startX) > 5){//如果先横向滑动了5px
+                        dir = 'x';
+                    }
+                }else{
+                    if(dir == 'x'){     //如果当前是横向滑动
+                        bannerLeft = e.targetTouches[0].clientX - disX;
+                        ul.style.transform = 'translateX('+bannerLeft+'px)';
+                    }
+                }
+            }, false);
+
+            banner.addEventListener('touchend', function(){
+                //当前松手位置与屏幕垂直中线比较，判断松手后滑块回弹到哪里
+                i = Math.round(-bannerLeft/w);
+                bannerLeft = -w *i;
+                ul.style.transition = '0.3s';       //回弹时加上过度效果
+                ul.style.transform = 'translateX('+bannerLeft+'px)';
+            }, false);
+        }, false);
+
+    </script>
+</body>
+</html>

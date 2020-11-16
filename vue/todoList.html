@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todo</title>
+    <script src='vue.js'></script>
+</head>
+<body>
+    <div id="todo">
+    <input v-model='inputValue'  type="text">
+    <button @click='append'>提交</button>
+<ul>
+    <li v-for='(list,index) in arr' :key="index">{{ list }}</li>
+</ul>
+</div>
+<script>
+    new Vue({
+        el:'#todo',
+        data:{
+            inputValue:'',
+            arr:[]
+        },
+        methods:{
+            append: function() {
+                this.arr.unshift(this.inputValue);
+                this.inputValue='';
+            }
+        }
+    })
+</script>
+</body>
+</html>

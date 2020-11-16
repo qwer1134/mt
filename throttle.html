@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>throttle</title>
+</head>
+<body>
+  <input class="inp">
+  <p></p>
+  <script>
+      let inp=document.querySelector('.inp')
+      let p=document.querySelector('p')
+
+    function throttle1(Fn,delay){
+      let proTime=Date.now()
+      
+      return function() {
+        let args=[...arguments]
+        let nowTime=Data.now()
+        if(nowTime-proTime>=delay) {
+          Fn.apply(this,args)
+          proTime=Date.now()
+        }
+      }
+    }
+
+    function throttle2(Fn,delay){
+      let timer=null
+      return function() {
+         let args=[...arguments]
+         if(!timer){
+         timer = setTimeout(()=>{
+           Fn.apply(this,args)
+           timer=null
+          },delay)
+         }
+        
+      }
+    }
+    let ab=function() {
+      // console.log(event)
+        p.append(this.value)
+    }
+    let callback=throttle2(ab,1000)
+    inp.addEventListener('input',callback.bind(inp))
+  </script>
+</body>
+</html>

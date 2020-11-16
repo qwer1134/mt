@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+    <ul id="ul">
+        <li v-for="x in its">{{x.mes}}</li>
+    </ul>
+    <ul id="json">
+        <li v-for="(x,name,index) in obj">{{name}}:{{x}}:{{index}}</li>
+        </ul>
+    <script src="vue.js"></script>
+    <script>
+    var app=new Vue({
+        el:"#ul",
+        data:{
+            its:[{mes:'hello'},{mes:'mi'}]
+        }
+    })
+    var app2=new Vue({
+        el:"#json",
+        data:{
+            obj:{
+                name:"tom",
+                value:"12",
+                age:"13"
+            }
+        }
+    })
+    </script>
+    </body>
+</html>

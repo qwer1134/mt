@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .wrapper{
+                position: relative;
+                display: inline-block;
+                
+            }
+            .img-wrapper {
+                position: absolute;
+                display: none;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                background-color:rgba(53, 52, 52, 0.2);
+                backdrop-filter: blur(10px);
+                z-index: 2;
+            }
+            .content{
+                display: inline-block;
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                background-color: whitesmoke;
+                /* transform: translateY(150px); */
+            }
+            .btn{
+                display: block;
+                width: 100px;
+                height: 70px;
+            }
+            .icon{
+            }
+        </style>
+       <body>
+           <div class="wrapper">
+            <div class="img-wrapper">
+                <div class="content" style="height: 100px; width: 100px;">
+                <svg t="1584889193142" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1110" width="100" height="100"><path d="M744.727273 551.563636L325.818182 795.927273c-30.254545 18.618182-69.818182-4.654545-69.818182-39.563637v-488.727272c0-34.909091 39.563636-58.181818 69.818182-39.563637l418.909091 244.363637c30.254545 16.290909 30.254545 62.836364 0 79.127272z" p-id="1111"></path></svg>
+                </div>
+            </div>
+           <video class="vide" src="Lin.mp4" height="450" width="800" poster="14.jpg" controls></video>
+           </div>
+           <button class="btn">toggle</button>
+           <iframe height="400" width="800" src="bootstrap/bootstrap.html"></iframe>
+           <script>
+               let imgWrapprt=document.querySelector('.img-wrapper')
+               let oBtn=document.querySelector('.btn')
+               let oVide=document.querySelector('.vide')
+               let oContent=document.querySelector('.content')
+               let contentHeight=parseInt(oContent.style.height)
+               let HEIGHT=oVide.getAttribute('height')
+               let heightMub=HEIGHT/2-contentHeight/2
+                oContent.style.transform=`translateY(${heightMub}px)`
+
+                oVide.addEventListener('canplay',function() {
+                    // console.log(11)
+                    imgWrapprt.style.display='inline-block'
+                })
+                imgWrapprt.addEventListener('click',function() {
+                    this.style.display='none'
+                    oVide.play()
+                })
+                oVide.addEventListener('click',function() {
+                    console.log(11)
+                })
+                setTimeout(function(){
+                    console.log(oVide.videoHeight)
+                },100)
+                console.log(window.navigator)
+           </script>
+    </body>
+</html>
