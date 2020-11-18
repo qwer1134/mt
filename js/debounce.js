@@ -1,12 +1,14 @@
-function debounce(func, delay, immediate){
-  var timer = null;
+function debounce(func, delay, immediate){ // 防抖
+  let timer = null;
   return function(){
-      var context = this;
-      var args = arguments;
-      if(timer) clearTimeout(timer);
+      let context = this
+      let args = arguments
+      if(timer) {
+          clearTimeout(timer)
+      }
 
       if(immediate){
-          var doNow = !timer;
+          let doNow = !timer;
           timer = setTimeout(function(){
               timer = null;
           },delay);
